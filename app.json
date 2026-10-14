@@ -1,0 +1,61 @@
+{
+  "id": "cadcraft",
+  "name": "CADCraft",
+  "tagline": "AutoCAD-style 2D/3D CAD (DXF/DWG)",
+  "upstream": "storytold/cadcraft",
+  "port": 7982,
+  "docsPort": 7979,
+  "launch": {
+    "args": [
+      "--control",
+      "{port}"
+    ]
+  },
+  "mcp": {
+    "server": "cadcraft",
+    "live": [
+      "mcp",
+      "--connect",
+      "127.0.0.1:{port}",
+      "--lazy"
+    ],
+    "headless": [
+      "mcp"
+    ],
+    "default": "live"
+  },
+  "windows": {
+    "dirs": [
+      "{ProgramFiles}\\CADCraft",
+      "{LocalAppData}\\Programs\\CADCraft"
+    ],
+    "app": "cadcraft.exe",
+    "cli": "cadcraft-cli.exe"
+  },
+  "macos": {
+    "bundles": [
+      "/Applications/CADCraft.app",
+      "{home}/Applications/CADCraft.app"
+    ],
+    "appBinary": "Contents/MacOS/CADCraft",
+    "cliPaths": [
+      "{home}/.artcraft/bin/cadcraft-cli",
+      "/usr/local/bin/cadcraft-cli",
+      "/opt/homebrew/bin/cadcraft-cli",
+      "{bundle}/Contents/MacOS/cadcraft-cli"
+    ],
+    "cliReleaseAsset": "cadcraft-cli-{version}-macos-universal.zip",
+    "cliBinaryInZip": "cadcraft-cli"
+  },
+  "prepare": {
+    "dirs": []
+  },
+  "auth": {
+    "type": "none",
+    "notes": "Loopback only, no token."
+  },
+  "verified": {
+    "windows": true,
+    "macos": false
+  }
+}
